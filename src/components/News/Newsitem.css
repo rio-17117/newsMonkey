@@ -112,12 +112,30 @@ a.btn.btn-primary:hover {
     }
 }
 @media (max-width: 659px) {
-    .container {
+    /* .container {
         padding: 10px;
     }
 
     .card {
         padding: 0px;
+    } */
+    div.col-4 {
+        flex: 0 0 calc(80% - 20px);
+        max-width: calc(80% - 20px); 
+        justify-content: center;
+        align-items: center;
+    }
+    .card{
+        flex: 0 0 calc(80% - 20px);
+        max-width: calc(100% - 20px); 
+        margin: 0px;
+        width:63vh;
+    }
+    div.container{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: fit-content;
     }
 }
 @media (max-width: 500px) {

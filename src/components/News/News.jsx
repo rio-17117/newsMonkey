@@ -48,7 +48,7 @@ export default class News extends Component {
                         this.state.articles.flat().map((element) => {
                             return <>
                                 <div className="col-4" >
-                                    <Newsitem key={element.url} title={element.title} description={element.description} imgUrl={element.urlToImage} newsUrl={element.url}/>
+                                    <Newsitem key={element.url} title={element.title?element.title:" CANNOT LOAD TITLE OF THIS NEWS "} description={element.description?element.description:" CANNOT LOAD DESCRIPTION OF THIS NEWS "} imgUrl={element.urlToImage?element.urlToImage:"https://discussions.apple.com/content/attachment/660042040"} newsUrl={element.url}/>
                                 </div>
                             </>
                         })

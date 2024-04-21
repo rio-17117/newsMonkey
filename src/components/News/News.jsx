@@ -14,7 +14,7 @@ export default class News extends Component {
     }
     async componentDidMount() {
         try {
-            const apiKey = '37b7ebc5906844b6b46fd27d9f2c8449';
+            const apiKey = `${process.env.NEWS_API_KEY}`;
             const apiUrl = `https://newsapi.org/v2/top-headlines?country=us&apiKey=${apiKey}`;
             const response = await fetch(apiUrl);
             if (!response.ok) {

@@ -7,6 +7,7 @@
     margin: auto;
     width: fit-content;
     height: fit-content;
+    overflow-y: hidden;
 }
 
 .head{
@@ -30,6 +31,13 @@
     max-width: calc(25% - 20px); 
     margin: 10px;
     height: fit-content;
+    /* overflow: hidden; */
+}
+.prev-next .btn{
+    display: inline-block;
+    justify-content: center;
+    align-items: center;
+    margin:10px ;
 }
 @media (max-width: 1489px) {
     .col-4{

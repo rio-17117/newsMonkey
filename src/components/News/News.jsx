@@ -1,21 +1,28 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 import './News.css'; // Import CSS file
 import Newsitem from './Newsitem';
 import ReactLoading from "react-loading";
 
 export default class News extends Component {
     constructor() {
-        super()
+        super();
         this.state = {
-            articles: this.articles,
+            articles: [],
             loading: true,
-            error: null
-        }
+            error: null,
+            currentPage: 1,
+        };
     }
+
     async componentDidMount() {
+        this.fetchArticles();
+    }
+
+    async fetchArticles() {
+        const { currentPage } = this.state;
         try {
-            const apiKey = `${process.env.NEWS_API_KEY}`;
-            const apiUrl = `https://newsapi.org/v2/top-headlines?country=us&apiKey=${apiKey}`;
+            const apiKey = `37b7ebc5906844b6b46fd27d9f2c8449`;
+            const apiUrl = `https://newsapi.org/v2/top-headlines?country=us&apiKey=${apiKey}&page=${currentPage}`;
             const response = await fetch(apiUrl);
             if (!response.ok) {
                 throw new Error('Network response was not ok');
@@ -26,6 +33,25 @@ export default class News extends Component {
             this.setState({ error: error.message, loading: false });
         }
     }
+
+    handlePreviousPage = () => {
+        this.setState(prevState => ({
+            currentPage: prevState.currentPage - 1,
+            loading: true,
+        }), () => {
+            this.fetchArticles();
+        });
+    };
+
+    handleNextPage = () => {
+        this.setState(prevState => ({
+            currentPage: prevState.currentPage + 1,
+            loading: true,
+        }), () => {
+            this.fetchArticles();
+        });
+    };
+
     render() {
         const { articles, loading, error } = this.state;
 
@@ -40,21 +66,27 @@ export default class News extends Component {
         if (error) {
             return <div>Error: {error}</div>;
         }
+
         return (
             <div className='container'>
                 <h2 className='head'>Top headlines</h2>
                 <div className="row">
-                    {
-                        this.state.articles.flat().map((element) => {
-                            return <>
-                                <div className="col-4" >
-                                    <Newsitem key={element.url} title={element.title?element.title:" CANNOT LOAD TITLE OF THIS NEWS "} description={element.description?element.description:" CANNOT LOAD DESCRIPTION OF THIS NEWS "} imgUrl={element.urlToImage?element.urlToImage:"https://discussions.apple.com/content/attachment/660042040"} newsUrl={element.url}/>
-                                </div>
-                            </>
-                        })
-                    }
+                    {articles.map((element) => (
+                        <div className="col-4" key={element.url}>
+                            <Newsitem
+                                title={element.title ? element.title : "CANNOT LOAD TITLE OF THIS NEWS"}
+                                description={element.description ? element.description : "CANNOT LOAD DESCRIPTION OF THIS NEWS"}
+                                imgUrl={element.urlToImage ? element.urlToImage : "https://discussions.apple.com/content/attachment/660042040"}
+                                newsUrl={element.url}
+                            />
+                        </div>
+                    ))}
+                </div>
+                <div className="prev-next">
+                <button type="button" class="btn btn-dark" onClick={this.handlePreviousPage}>previous</button>
+                <button disabled={this.state.currentPage.page<=1} type="button" class="btn btn-dark" onClick={this.handleNextPage}>next</button>
                 </div>
             </div>
-        )
+        );
     }
 }

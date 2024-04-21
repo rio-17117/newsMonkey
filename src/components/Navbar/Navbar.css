@@ -1,5 +1,68 @@
-#nav_cont{
-    /* border: 2px solid ; */
+@import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&display=swap');
+.containerr{
     margin: 2px;
-    border-radius: 15px;
+    padding: 0px;
+    overflow: hidden;
+    display: flex;
+    justify-content: space-between;
+    border: 2px solid rgb(30, 26, 25);
+    border-radius: 10px;
+    background-color: rgb(30, 26, 25);
 }
+
+.title {
+    font-family: "Newsreader", serif;
+    font-optical-sizing: auto;
+    font-weight: 1000;
+    font-style: normal;
+    font-size: 50px;
+    margin:0px 0px 0px 0px ;
+    color: white;
+}
+
+ul.list-holder{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+    list-style-type: none;
+    margin: 0px;
+    padding: 0px;
+}
+
+.list-items{
+    font-size: 22px;
+    font-weight: 500;
+    color: white;
+}
+.list-items:hover{
+    transition: all ease-in-out 0.5ms;
+}
+/* bitch css  */
+.MobileNavigation{
+    display: none;
+}
+
+.HamburgerMenu{
+    top: 15px;
+}
+
+
+@media (max-width: 600px){
+
+    .DesktopNavigation{
+        display: none;
+    }
+
+    .MobileNavigation{
+        display: flex;
+        align-items: center;
+        height: 15vh;
+        background-color: red;
+    }
+
+    .NavLinks{
+       background-color: red; 
+    }
+}
+

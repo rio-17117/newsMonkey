@@ -120,14 +120,17 @@ a.btn.btn-primary:hover {
         padding: 0px;
     } */
     div.col-4 {
-        flex: 0 0 calc(80% - 20px);
-        max-width: calc(80% - 20px); 
+        display: flex;
+        flex: 0 0 calc(100% - 20px);
+        max-width: calc(100% - 20px); 
         justify-content: center;
         align-items: center;
     }
     .card{
-        flex: 0 0 calc(80% - 20px);
-        max-width: calc(100% - 20px); 
+        /* display: flex; */
+
+        flex: 0 0 calc(100% - 0px);
+        max-width: calc(100% - 0px); 
         margin: 0px;
         width:63vh;
     }
@@ -138,22 +141,93 @@ a.btn.btn-primary:hover {
         width: fit-content;
     }
 }
-@media (max-width: 500px) {
-    .container {
-        padding: 10px;
+@media (max-width: 548px) {
+    div.col-4 {
+        flex: 0 0 calc(100%);
+        max-width: calc(100%); 
+        justify-content: center;
+        align-items: center;
     }
+    .card{
+        /* display: flex; */
 
-    .card {
+        flex: 0 0 calc(95% - 0px);
+        max-width: calc(95% - 0px); 
+        margin: 0px;
+        width:63vh;
+    }
+    div.container{
+        flex: 0 0 calc(100%);
         padding: 0px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: fit-content;
     }
 }
-@media (max-width: 363px) {
-    .container {
-        padding: 5px;
-        margin: 5px;
+@media (max-width: 505px) {
+    div.col-4 {
+        flex: 0 0 calc(100%);
+        max-width: calc(100%); 
+        justify-content: center;
+        align-items: center;
     }
+    .card{
+        /* display: flex; */
 
-    .card {
+        flex: 0 0 calc(95% - 0px);
+        max-width: calc(95% - 0px); 
+        margin: 0px;
+        width:63vh;
+    }
+    .card-body{
+        padding: 8px;
+    }
+    h5.card-title{
+        
+        font-size: 30px;
+    }
+    p.card-text{
+        margin: 5px;
+        
+        font-size: 30px;
+    }
+    div.container{
         padding: 0px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: fit-content;
+    }
+}
+@media (max-width: 419px) {
+    div.col-4 {
+        flex: 0 0 calc(100%);
+        max-width: calc(100%); 
+        justify-content: center;
+        align-items: center;
+    }
+    .card{
+        /* display: flex; */
+
+        flex: 0 0 calc(95% - 0px);
+        max-width: calc(98% - 0px); 
+        margin: 0px;
+        width:63vh;
+    }
+    .card-body{
+        padding: 4px;
+    }
+    p.card-text{
+        margin: 5px;
+        padding: 5px;
+        font-size: 35px;
+    }
+    div.container{
+        padding: 0px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: fit-content;
     }
 }

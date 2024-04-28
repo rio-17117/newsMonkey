@@ -5,9 +5,11 @@
     overflow: hidden;
     display: flex;
     justify-content: space-between;
-    border: 2px solid rgb(30, 26, 25);
+    border: 2px solid rgb(43, 43, 43);
     border-radius: 10px;
-    background-color: rgb(30, 26, 25);
+    background-color: rgb(20, 20, 20);
+    box-shadow: 10px 10px 100px 30px rgb(6, 6, 6);
+    width: 100%;
 }
 
 .title {
@@ -17,7 +19,9 @@
     font-style: normal;
     font-size: 50px;
     margin:0px 0px 0px 0px ;
-    color: white;
+    color: rgb(255, 255, 255);
+    padding: 10px;
+    height: fit-content;
 }
 
 ul.list-holder{
@@ -47,22 +51,62 @@ ul.list-holder{
     top: 15px;
 }
 
+.ham-container{
+    position: relative;
+    top:20px;
+    right: 20px;
+    display:none ;
+}
+h2.head{
+    color: white;
+}
 
-@media (max-width: 600px){
+@media (max-width: 1200px){
 
-    .DesktopNavigation{
+    ul.list-holder{
         display: none;
     }
-
-    .MobileNavigation{
-        display: flex;
-        align-items: center;
-        height: 15vh;
-        background-color: red;
-    }
-
-    .NavLinks{
-       background-color: red; 
+    .ham-container{
+        position: relative;
+        top:20px;
+        right: 20px;
+        display:block ;
     }
 }
 
+@media (max-width: 449px){
+
+    .title{
+        padding: 2px;
+        font-size: 45px;
+    }
+    .ham-container{
+        position: absolute;
+        right: 20px;
+        bottom: 20px;
+        /* bottom: 20px; */
+    }
+}
+@media (max-width: 375px){
+
+    .title{
+        padding: 2px;
+        font-size: 40px;
+    }
+    .ham-container{
+        position: absolute;
+        top: 15px;
+    }
+}
+@media (max-width: 338px){
+
+    .title{
+        padding: 0px;
+        font-size: 35px;
+    }
+    .ham-container{
+        position: absolute;
+        top: 11px;
+        bottom: 5px;
+    }
+}

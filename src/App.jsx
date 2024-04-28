@@ -1,16 +1,17 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router } from 'react-router-dom'; 
 import './App.css';
-import NavBar from './components/Navbar/NavBar';
+import Navbar from './components/Navbar/Navbar';
 import News from './components/News/News';
+import Sidebar from './components/Navbar/Sidebar';
 
 export default class App extends Component {
   render() {
     return (
       <Router>
         <div>
-          <NavBar />
-          {/* <News/> */}
+          <Navbar />
+          <News/>
         </div>
       </Router>
     );

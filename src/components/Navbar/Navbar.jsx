@@ -17,7 +17,7 @@ const NavLinks = () => {
                 <li className="list-items" ><Link className="link" to={'/'}> About me & contacts </Link></li>
             </ul>
             <div></div>
-            <div className='ham-container'><Sidebar/></div>
+            <div className='ham-container'><Sidebar /></div>
         </div>
     );
 }

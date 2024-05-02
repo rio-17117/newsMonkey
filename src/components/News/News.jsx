@@ -1,9 +1,20 @@
-import React, { Component } from 'react';
+import React, { Component, } from 'react';
+import PropTypes from 'prop-types';
 import './News.css'; // Import CSS file
 import Newsitem from './Newsitem';
 import ReactLoading from "react-loading";
 
 export default class News extends Component {
+    static defaultProps ={
+        country:'jp',
+        pageSize:9,
+        category:'general'
+    }
+    static propTypes ={
+        country:PropTypes.string,
+        pageSize:PropTypes.number,
+        category:PropTypes.string
+    }
     constructor() {
         super();
         this.state = {
@@ -22,7 +33,7 @@ export default class News extends Component {
         const { currentPage } = this.state;
         try {
             const apiKey = `37b7ebc5906844b6b46fd27d9f2c8449`;
-            const apiUrl = `https://newsapi.org/v2/top-headlines?country=us&apiKey=${apiKey}&page=${currentPage}`;
+            const apiUrl = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=${apiKey}&page=${currentPage}&pageSize=${this.props.pageSize}`;
             const response = await fetch(apiUrl);
             if (!response.ok) {
                 throw new Error('Network response was not ok');

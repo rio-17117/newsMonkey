@@ -6,7 +6,7 @@ import ReactLoading from "react-loading";
 
 export default class News extends Component {
     static defaultProps ={
-        country:'jp',
+        country:'us',
         pageSize:9,
         category:'general'
     }
@@ -32,7 +32,8 @@ export default class News extends Component {
     async fetchArticles() {
         const { currentPage } = this.state;
         try {
-            const apiKey = `37b7ebc5906844b6b46fd27d9f2c8449`;
+            // const apiKey = `37b7ebc5906844b6b46fd27d9f2c8449`;
+            const apiKey = process.env.API_KEY;
             const apiUrl = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=${apiKey}&page=${currentPage}&pageSize=${this.props.pageSize}`;
             const response = await fetch(apiUrl);
             if (!response.ok) {

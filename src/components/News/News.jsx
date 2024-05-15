@@ -5,15 +5,15 @@ import Newsitem from './Newsitem';
 import ReactLoading from "react-loading";
 
 export default class News extends Component {
-    static defaultProps ={
-        country:'us',
-        pageSize:9,
-        category:'general'
+    static defaultProps = {
+        country: 'us',
+        pageSize: 9,
+        category: 'general'
     }
-    static propTypes ={
-        country:PropTypes.string,
-        pageSize:PropTypes.number,
-        category:PropTypes.string
+    static propTypes = {
+        country: PropTypes.string,
+        pageSize: PropTypes.number,
+        category: PropTypes.string
     }
     constructor() {
         super();
@@ -32,11 +32,15 @@ export default class News extends Component {
     async fetchArticles() {
         const { currentPage } = this.state;
         try {
-            const apiKey = process.env.API_KEY;
+            // var env = require('env')()
+            const apiKey = process.env.REACT_APP_API_KEY;
+            // const apiKey = '37b7ebc5906844b6b46fd27d9f2c8449';
             const apiUrl = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=${apiKey}&page=${currentPage}&pageSize=${this.props.pageSize}`;
             const response = await fetch(apiUrl);
             if (!response.ok) {
-                throw new Error('Network response was not ok');
+                return <div>
+                    <img src="./Error.svg" alt='Responsve was not OK !! check your internet connection' />
+                </div>;
             }
             const data = await response.json();
             this.setState({ articles: data.articles, loading: false });
@@ -75,7 +79,9 @@ export default class News extends Component {
         }
 
         if (error) {
-            return <div>Error: {error}</div>;
+            return <div>
+            <img src="./Error.svg" alt='Responsve was not OK !! check your internet connection' />
+        </div>
         }
 
         return (
@@ -94,8 +100,8 @@ export default class News extends Component {
                     ))}
                 </div>
                 <div className="prev-next">
-                <button type="button" class="btn btn-dark" onClick={this.handlePreviousPage}>previous</button>
-                <button disabled={this.state.currentPage.page<=1} type="button" class="btn btn-dark" onClick={this.handleNextPage}>next</button>
+                    <button type="button" class="btn btn-dark" onClick={this.handlePreviousPage}>previous</button>
+                    <button disabled={this.state.currentPage.page <= 1} type="button" class="btn btn-dark" onClick={this.handleNextPage}>next</button>
                 </div>
             </div>
         );

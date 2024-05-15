@@ -1,3 +1,28 @@
 .section{
     color: whitesmoke;
 }
+#sidebar{
+    background-color: rgb(49, 49, 49);
+    width: 5000px;
+}
+@media (max-width: 425px) {
+    /* max-width:320px; */
+    p.head{
+        color:white;
+        font-size:44px;
+    }
+}
+@media (max-width: 385px) {
+    /* max-width:320px; */
+    p.head{
+        color:white;
+        font-size:38px;
+    }
+}
+@media (max-width: 358px) {
+    /* max-width:320px; */
+    p.head{
+        color:white;
+        font-size:35px;
+    }
+}

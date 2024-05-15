@@ -10,11 +10,11 @@ const NavLinks = () => {
             <h3 className='title'>Newsmonkey</h3>
 
             <ul className="list-holder" >
-                <li className="list-items" ><Link className="link" to={'/'}> Home </Link></li>
-                <li className="list-items" ><Link className="link" to={'/'}> Types of News </Link></li>
-                <li className="list-items" ><Link className="link" to={'/'}> Business </Link></li>
-                <li className="list-items" ><Link className="link" to={'/'}> Technology </Link></li>
-                <li className="list-items" ><Link className="link" to={'/'}> About me & contacts </Link></li>
+                <li className="list-items" ><Link className="link" to={'/home'}> Home </Link></li>
+                <li className="list-items" ><Link className="link" to={'/types of news'}> Types of News </Link></li>
+                <li className="list-items" ><Link className="link" to={'/business'}> Business </Link></li>
+                <li className="list-items" ><Link className="link" to={'/technology'}> Technology </Link></li>
+                <li className="list-items" ><Link className="link" to={'/about me & contacts'}> About me & contacts </Link></li>
             </ul>
             <div></div>
             <div className='ham-container'><Sidebar /></div>

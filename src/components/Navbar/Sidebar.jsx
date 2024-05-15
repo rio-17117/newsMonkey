@@ -43,34 +43,12 @@ const Sidebar = () => {
             </section>
 
             {/*===== Sidebar =====*/}
-            <SidebarWrapper className={isSidebarOpen ? 'show' : ''}>
+            <SidebarWrapper className={isSidebarOpen ? 'show' : ''} id='sidebar'>
                 <div className="sidebar_head">
-                    <h3>newsMonkey</h3>
+                    <p className='head'>NewsMonkey</p>
                 </div>
                 <div className="sidebar_body">
                     <ul>
-                        {/* <li>
-                            <div className="dropdown" onClick={toggleDropdown}>
-                                <span>All Products</span>
-                                <span>{isDropdownOpen ? '-' : '+'}</span>
-                            </div>
-                            {
-                                isDropdownOpen && (
-                                    <ul className="dropdown_list">
-                                        {
-                                            dropdownLinks.map((currValue) => {
-                                                const { id, link, path } = currValue;
-                                                return (
-                                                    <li key={id}>
-                                                        <Link to={path}>{link}</Link>
-                                                    </li>
-                                                );
-                                            })
-                                        }
-                                    </ul>
-                                )
-                            }
-                        </li> */}
                         {
                             sidebarLinks.map((currValue) => {
                                 const { id, link, path } = currValue;

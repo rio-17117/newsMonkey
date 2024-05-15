@@ -38,6 +38,14 @@
     align-items: center;
     margin:10px ;
 }
+.error-msg{
+    color:white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    margin-top: 5vw;
+}
 @media (max-width: 1489px) {
     .col-4{
         margin: 0px;

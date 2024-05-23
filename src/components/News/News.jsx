@@ -32,9 +32,7 @@ export default class News extends Component {
     async fetchArticles() {
         const { currentPage } = this.state;
         try {
-            // var env = require('env')()
             const apiKey = process.env.REACT_APP_API_KEY;
-            // const apiKey = '37b7ebc5906844b6b46fd27d9f2c8449';
             const apiUrl = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=${apiKey}&page=${currentPage}&pageSize=${this.props.pageSize}`;
             const response = await fetch(apiUrl);
             if (!response.ok) {

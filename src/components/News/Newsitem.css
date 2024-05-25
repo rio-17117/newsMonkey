@@ -13,6 +13,10 @@
     border-radius: 20px;
     overflow: hidden;
 }
+.text-details{
+    color: #ffa4a4c2;
+}
+
 .card:hover{
     cursor: pointer;
 }

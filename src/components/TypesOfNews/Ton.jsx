@@ -1,9 +1,7 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom';
-import Newsitem from '../News/Newsitem';
 import './TON.css'
-import News from '../News/News';
-// import Newsitem from '../News/Newsitem';
+
 export default class TON extends Component {
     render() {
         return (

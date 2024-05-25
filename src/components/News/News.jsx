@@ -1,6 +1,6 @@
 import React, { Component, } from 'react';
 import PropTypes from 'prop-types';
-import './News.css'; // Import CSS file
+import './News.css';
 import Newsitem from './Newsitem';
 import ReactLoading from "react-loading";
 
@@ -33,7 +33,7 @@ export default class News extends Component {
         const { currentPage } = this.state;
         try {
             const apiKey = process.env.REACT_APP_API_KEY;
-            const apiUrl = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=${apiKey}&page=${currentPage}&pageSize=${this.props.pageSize}`;
+            const apiUrl = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=${apiKey}&page=${currentPage}&pageSize=${this.props.pageSize}&author=${this.props.author}&publishedAt=${this.props.time}`;
             const response = await fetch(apiUrl);
             if (!response.ok) {
                 return <div>
@@ -92,7 +92,8 @@ export default class News extends Component {
                                 title={element.title ? element.title : "CANNOT LOAD TITLE OF THIS NEWS"}
                                 description={element.description ? element.description : "CANNOT LOAD DESCRIPTION OF THIS NEWS"}
                                 imgUrl={element.urlToImage ? element.urlToImage : "https://discussions.apple.com/content/attachment/660042040"}
-                                newsUrl={element.url}
+                                author={element.author ? element.author : "UKNOWN"}
+                                time={element.publishedAt ? element.publishedAt : "UKNOWN"}
                             />
                         </div>
                     ))}

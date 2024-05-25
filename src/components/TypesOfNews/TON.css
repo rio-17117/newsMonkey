@@ -1,7 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Anton&family=Briem+Hand:wght@100..900&display=swap');
 .container{
-    /* margin: 0px 200px; */
+    display: flex;
+    justify-content: center;
+    
 }
 .head {
     color: whitesmoke;
@@ -24,11 +26,12 @@
 
 .listholder {
     list-style-type: none;
+    padding: 0px;
 }
 .list-itemss{
-    width: 1000px;
+    width: 85vw;
     padding: 5px;
-    margin: 10px;
+    margin: 5px;
     background-color: rgb(253, 253, 253);
     border: 2px solid rgb(0, 33, 63);
     border-radius: 15px;

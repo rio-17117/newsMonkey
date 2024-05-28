@@ -1,4 +1,4 @@
-import React, { Component, } from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import './News.css';
 import Newsitem from './Newsitem';
@@ -31,14 +31,13 @@ export default class News extends Component {
 
     async fetchArticles() {
         const { currentPage } = this.state;
+        const { country, category, pageSize } = this.props;
         try {
-            const apiKey = process.env.REACT_APP_API_KEY;
-            const apiUrl = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=${apiKey}&page=${currentPage}&pageSize=${this.props.pageSize}&author=${this.props.author}&publishedAt=${this.props.time}`;
+            const apiUrl = `https://saurav.tech/NewsAPI/top-headlines/category/${category}/${country}.json?page=${currentPage}&pageSize=${pageSize}`;
             const response = await fetch(apiUrl);
             if (!response.ok) {
-                return <div>
-                    <img src="./Error.svg" alt='Responsve was not OK !! check your internet connection' />
-                </div>;
+                this.setState({ error: 'Response was not OK! Check your internet connection.', loading: false });
+                return;
             }
             const data = await response.json();
             this.setState({ articles: data.articles, loading: false });
@@ -77,9 +76,11 @@ export default class News extends Component {
         }
 
         if (error) {
-            return <div>
-            <img src="./Error.svg" alt='Responsve was not OK !! check your internet connection' />
-        </div>
+            return (
+                <div>
+                    <img src="./Error.svg" alt='Response was not OK! Check your internet connection.' />
+                </div>
+            );
         }
 
         return (
@@ -92,15 +93,16 @@ export default class News extends Component {
                                 title={element.title ? element.title : "CANNOT LOAD TITLE OF THIS NEWS"}
                                 description={element.description ? element.description : "CANNOT LOAD DESCRIPTION OF THIS NEWS"}
                                 imgUrl={element.urlToImage ? element.urlToImage : "https://discussions.apple.com/content/attachment/660042040"}
-                                author={element.author ? element.author : "UKNOWN"}
-                                time={element.publishedAt ? element.publishedAt : "UKNOWN"}
+                                author={element.author ? element.author : "UNKNOWN"}
+                                time={element.publishedAt ? element.publishedAt : "UNKNOWN"}
+                                newsUrl={element.url}
                             />
                         </div>
                     ))}
                 </div>
                 <div className="prev-next">
-                    <button type="button" class="btn btn-dark" onClick={this.handlePreviousPage}>previous</button>
-                    <button disabled={this.state.currentPage.page <= 1} type="button" class="btn btn-dark" onClick={this.handleNextPage}>next</button>
+                    <button type="button" className="btn btn-dark" onClick={this.handlePreviousPage}>previous</button>
+                    <button type="button" className="btn btn-dark" onClick={this.handleNextPage}>next</button>
                 </div>
             </div>
         );

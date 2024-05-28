@@ -3,11 +3,12 @@ import PropTypes from 'prop-types';
 import './News.css';
 import Newsitem from './Newsitem';
 import ReactLoading from "react-loading";
+import InfiniteScroll from 'react-infinite-scroll-component';
 
 export default class News extends Component {
     static defaultProps = {
         country: 'us',
-        pageSize: 9,
+        pageSize: 1,
         category: 'general'
     }
     static propTypes = {
@@ -22,6 +23,7 @@ export default class News extends Component {
             loading: true,
             error: null,
             currentPage: 1,
+            totalResults: 0
         };
     }
 
@@ -46,24 +48,11 @@ export default class News extends Component {
         }
     }
 
-    handlePreviousPage = () => {
-        this.setState(prevState => ({
-            currentPage: prevState.currentPage - 1,
-            loading: true,
-        }), () => {
-            this.fetchArticles();
-        });
-    };
+    fetchMoreData = () => {
+        this.state({ pageSize: this.state.pageSize + 1 })
+        this.fetchArticles()
 
-    handleNextPage = () => {
-        this.setState(prevState => ({
-            currentPage: prevState.currentPage + 1,
-            loading: true,
-        }), () => {
-            this.fetchArticles();
-        });
-    };
-
+    }
     render() {
         const { articles, loading, error } = this.state;
 
@@ -86,25 +75,38 @@ export default class News extends Component {
         return (
             <div className='container'>
                 <h2 className='head'>Top headlines</h2>
-                <div className="row">
-                    {articles.map((element) => (
-                        <div className="col-4" key={element.url}>
-                            <Newsitem
-                                title={element.title ? element.title : "CANNOT LOAD TITLE OF THIS NEWS"}
-                                description={element.description ? element.description : "CANNOT LOAD DESCRIPTION OF THIS NEWS"}
-                                imgUrl={element.urlToImage ? element.urlToImage : "https://discussions.apple.com/content/attachment/660042040"}
-                                author={element.author ? element.author : "UNKNOWN"}
-                                time={element.publishedAt ? element.publishedAt : "UNKNOWN"}
-                                newsUrl={element.url}
-                            />
+                <InfiniteScroll
+                    dataLength={this.state.articles.length}
+                    next={this.state.fetchMoreData}
+                    hasMore={this.state.articles.length !== this.state.totalResults}
+                    loader={
+                        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                            <ReactLoading type="bars" color="#37d6fa" height={100} width={50} />
                         </div>
-                    ))}
-                </div>
-                <div className="prev-next">
-                    <button type="button" className="btn btn-dark" onClick={this.handlePreviousPage}>previous</button>
-                    <button type="button" className="btn btn-dark" onClick={this.handleNextPage}>next</button>
-                </div>
-            </div>
+                    }
+
+                >
+
+
+
+                    <div className="rowss">
+                        {articles.map((element) => (
+                            <div className="col-4" key={element.url}>
+                                <Newsitem
+                                    title={element.title ? element.title : "CANNOT LOAD TITLE OF THIS NEWS"}
+                                    description={element.description ? element.description : "CANNOT LOAD DESCRIPTION OF THIS NEWS"}
+                                    imgUrl={element.urlToImage ? element.urlToImage : "https://discussions.apple.com/content/attachment/660042040"}
+                                    author={element.author ? element.author : "UNKNOWN"}
+                                    time={element.publishedAt ? element.publishedAt : "UNKNOWN"}
+                                    newsUrl={element.url}
+                                />
+                            </div>
+
+                        ))}
+                    </div>
+
+                </InfiniteScroll>
+            </div >
         );
     }
 }

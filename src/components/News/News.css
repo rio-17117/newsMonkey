@@ -8,6 +8,7 @@
     width: fit-content;
     height: fit-content;
     overflow-y: hidden;
+    max-height: auto;
 }
 
 .head{
@@ -18,12 +19,19 @@
     font-weight: 900;
     font-size: 50px;
     text-decoration: underline;
+    max-height: auto;
+
 }
 
-.row {
+.rowss {
     display: flex;
+    flex-direction: row;
     flex-wrap: wrap; 
     justify-content: center; 
+    height: 100%;
+    width: 100%;
+    max-height: auto;
+    
 }
 
 .col-4 {
@@ -31,7 +39,17 @@
     max-width: calc(25% - 20px); 
     margin: 10px;
     height: fit-content;
+    max-height: auto;
 }
+.col-4 {
+    flex: 0 0 calc(25% - 20px);
+    max-width: calc(25% - 20px);
+    margin: 10px;
+    height: auto; 
+    height: fit-content;
+    max-height: auto;
+} 
+
 .prev-next .btn{
     display: inline-block;
     justify-content: center;

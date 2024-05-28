@@ -1,7 +1,9 @@
 .container {
     margin: auto;
-    padding: 1rem;
+    padding: 0.5vw;
     border-radius: 15px;
+    max-height: auto;
+    overflow-y: auto;
 }
 
 .card {

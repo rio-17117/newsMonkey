@@ -14,7 +14,8 @@ const NavLinks = () => {
                 <li className="list-items" ><Link className="link" to={'/types of news'}> Types of News </Link></li>
                 <li className="list-items" ><Link className="link" to={'/business'}> Business </Link></li>
                 <li className="list-items" ><Link className="link" to={'/technology'}> Technology </Link></li>
-                <li className="list-items" ><Link className="link" to={'/about me & contacts'}> About me & contacts </Link></li>
+                <li className="list-items" ><Link className="link" to={'/entertainment'}> Entertainment</Link></li>
+                {/* <li className="list-items" ><Link className="link" to={'/about me & contacts'}> About me & contacts </Link></li> */}
             </ul>
             <div></div>
             <div className='ham-container'><Sidebar /></div>

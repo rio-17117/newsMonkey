@@ -95,7 +95,7 @@ export default class News extends Component {
                                 <Newsitem
                                     title={element.title ? element.title : "CANNOT LOAD TITLE OF THIS NEWS"}
                                     description={element.description ? element.description : "CANNOT LOAD DESCRIPTION OF THIS NEWS"}
-                                    imgUrl={element.urlToImage ? element.urlToImage : "https://discussions.apple.com/content/attachment/660042040"}
+                                    imgUrl={element.urlToImage ? element.urlToImage : 'https://discussions.apple.com/content/attachment/660042040'}
                                     author={element.author ? element.author : "UNKNOWN"}
                                     time={element.publishedAt ? element.publishedAt : "UNKNOWN"}
                                     newsUrl={element.url}

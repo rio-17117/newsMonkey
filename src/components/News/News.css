@@ -4,11 +4,13 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin: auto;
     width: fit-content;
     height: fit-content;
     overflow-y: hidden;
-    max-height: auto;
+    max-height: fit-content;
+    min-height: fit-content;
+    padding: 2px;
+    box-sizing:content-box;
 }
 
 .head{
@@ -24,32 +26,25 @@
 }
 
 .rowss {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap; 
-    justify-content: center; 
-    height: 100%;
-    width: 100%;
-    max-height: auto;
-    
+     display: flex;
+     flex-direction: row;
+     flex-wrap:wrap-reverse;
+     align-items: center;
+     height: fit-content;
+     max-height: fit-content;
+     min-height: fit-content;
+
 }
 
 .col-4 {
-    flex: 0 0 calc(25% - 20px); 
-    max-width: calc(25% - 20px); 
-    margin: 10px;
+    flex: 0 0 calc(25% - 5px); 
+    max-width: calc(26% - 20px);
+    margin: 2px;
     height: fit-content;
     max-height: auto;
+    max-height: fit-content;
+    min-height: fit-content;
 }
-.col-4 {
-    flex: 0 0 calc(25% - 20px);
-    max-width: calc(25% - 20px);
-    margin: 10px;
-    height: auto; 
-    height: fit-content;
-    max-height: auto;
-} 
-
 .prev-next .btn{
     display: inline-block;
     justify-content: center;
@@ -72,13 +67,13 @@
 }
 @media (max-width: 1290px) {
     .col-4 {
-        flex: 0 0 calc(33.3% - 20px);
+        flex: 0 0 calc(33.3% - 5px);
         max-width: calc(33.3% - 20px); 
     }
 }
 @media (max-width: 955px) {
     .col-4 {
-        flex: 0 0 calc(50% - 20px); 
+        flex: 0 0 calc(50% - 5px); 
         max-width: calc(50% - 20px); 
         
     }
@@ -87,7 +82,7 @@
 
 @media (max-width: 659px) {
     div.col-4 {
-        flex: 0 0 calc(100% - 20px);
+        flex: 0 0 calc(100% - 5px);
         max-width: calc(100% - 20px); 
         justify-content: center;
         align-items: center;
